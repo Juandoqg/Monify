@@ -13,7 +13,7 @@ import com.example.monify.Entity.User;
 import com.example.monify.Entity.Transaccion;
 import com.example.monify.DAO.userDao;
 
-@Database(entities = {User.class, Tarjeta.class, Transaccion.class}, version = 4)
+@Database(entities = {User.class, Tarjeta.class, Transaccion.class}, version = 5)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract  userDao userDao();
     public abstract tarjetaDao tarjetaDao();

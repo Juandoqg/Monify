@@ -22,14 +22,14 @@ public interface tarjetaDao {
     void eliminarTarjeta(Tarjeta tarjeta);
 
     // Obtener todas las tarjetas de un usuario (por su ID)
-    @Query("SELECT * FROM Tarjeta WHERE userId = :userId")
+    @Query("SELECT * FROM tarjetas WHERE userId = :userId")
     List<Tarjeta> obtenerTarjetasPorUsuario(int userId);
 
     // Obtener una tarjeta específica por su ID
-    @Query("SELECT * FROM Tarjeta WHERE id = :tarjetaId")
+    @Query("SELECT * FROM tarjetas WHERE id = :tarjetaId")
     Tarjeta obtenerTarjetaPorId(int tarjetaId);
 
     // Eliminar todas las tarjetas de un usuario (si fuera necesario)
-    @Query("DELETE FROM Tarjeta WHERE userId = :userId")
+    @Query("DELETE FROM tarjetas WHERE userId = :userId")
     void eliminarTodasLasTarjetas(int userId);
 }
