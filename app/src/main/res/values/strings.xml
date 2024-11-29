@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">Monify</string>
-
+    <string name="tarjeta_background">Imagen de fondo de tarjeta</string>
     <!-- Aquí agregamos el array con los tipos de tarjeta -->
     <string-array name="tarjetas">
         <item>VISA</item>
         <item>MASTERCARD</item>
-        <item>AMERICAN EXPRESS</item>
     </string-array>
 </resources>
 
