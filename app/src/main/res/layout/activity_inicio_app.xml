@@ -1,0 +1,76 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+            <!-- Gráfico circular -->
+
+            <TextView
+                android:id="@+id/tvSaldoTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Saldo Total: $0.00"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgGrafico"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tvSaldoTotal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Botones rápidos -->
+            <Button
+                android:id="@+id/btnAgregarIngreso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar Ingreso"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/imgGrafico"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btnAgregarGasto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar Gasto"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/imgGrafico"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/BottomNavStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

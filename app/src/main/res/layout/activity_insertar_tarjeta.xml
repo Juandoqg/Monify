@@ -1,0 +1,76 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InsertarTarjetaActivity">
+
+    <!-- EditText para ingresar el nombre de la tarjeta -->
+    <Spinner
+        android:id="@+id/spinnerNombreTarjeta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- EditText para ingresar el número de la tarjeta -->
+    <EditText
+        android:id="@+id/etNumeroTarjeta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Número de la tarjeta"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/spinnerNombreTarjeta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- EditText para ingresar el saldo de la tarjeta -->
+    <EditText
+        android:id="@+id/etSaldoTarjeta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Saldo de la tarjeta"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/etNumeroTarjeta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- EditText para ingresar la fecha de expiración -->
+    <EditText
+        android:id="@+id/etFechaExpiracion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Fecha de expiración (MM/AAAA)"
+        app:layout_constraintTop_toBottomOf="@id/etSaldoTarjeta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botón para agregar la tarjeta -->
+    <Button
+        android:id="@+id/btnAgregarTarjeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar Tarjeta"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/etFechaExpiracion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón para volver atrás -->
+    <Button
+        android:id="@+id/btnVolverAtras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver Atrás"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/btnAgregarTarjeta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
