@@ -17,6 +17,8 @@ import com.example.monify.Interface.AppDatabase;
 import com.example.monify.Entity.Tarjeta;
 import android.text.Editable;
 import android.text.TextWatcher;
+import java.util.regex.Pattern;
+
 
 public class InsertarTarjetaActivity extends AppCompatActivity {
 
@@ -46,29 +48,21 @@ public class InsertarTarjetaActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerNombre.setAdapter(adapter);
 
-        // Agregar TextWatcher al campo etNumero
+        // Agregar TextWatcher al campo de número de tarjeta
         etNumero.addTextChangedListener(new TextWatcher() {
             private String currentText = "";
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // No se necesita implementar nada aquí
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // No se necesita implementar nada aquí
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
                 String input = s.toString();
-                // Evitar bucles infinitos
                 if (!input.equals(currentText)) {
-                    // Eliminar cualquier carácter no numérico
                     String formattedInput = input.replaceAll("[^0-9]", "");
-
-                    // Actualizar el texto formateado (por ejemplo, añadiendo espacios cada 4 caracteres)
                     StringBuilder formatted = new StringBuilder();
                     for (int i = 0; i < formattedInput.length(); i++) {
                         if (i > 0 && i % 4 == 0) {
@@ -76,12 +70,45 @@ public class InsertarTarjetaActivity extends AppCompatActivity {
                         }
                         formatted.append(formattedInput.charAt(i));
                     }
-
                     currentText = formatted.toString();
-                    etNumero.removeTextChangedListener(this); // Eliminar temporalmente el listener
-                    etNumero.setText(currentText); // Establecer el texto actualizado
-                    etNumero.setSelection(currentText.length()); // Mover el cursor al final
-                    etNumero.addTextChangedListener(this); // Volver a agregar el listener
+                    etNumero.removeTextChangedListener(this);
+                    etNumero.setText(currentText);
+                    etNumero.setSelection(currentText.length());
+                    etNumero.addTextChangedListener(this);
+                }
+            }
+        });
+
+        // Agregar TextWatcher al campo de fecha de expiración
+        etFechaExpiracion.addTextChangedListener(new TextWatcher() {
+            private String currentText = "";
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String input = s.toString();
+                if (!input.equals(currentText)) {
+                    String formattedInput = input.replaceAll("[^0-9]", "");
+                    StringBuilder formatted = new StringBuilder();
+                    for (int i = 0; i < formattedInput.length(); i++) {
+                        if (i == 2 && formatted.length() < 5) {
+                            formatted.append("/");
+                        }
+                        formatted.append(formattedInput.charAt(i));
+                    }
+                    if (formatted.length() > 5) {
+                        formatted.setLength(5); // Limitar a MM/AA
+                    }
+                    currentText = formatted.toString();
+                    etFechaExpiracion.removeTextChangedListener(this);
+                    etFechaExpiracion.setText(currentText);
+                    etFechaExpiracion.setSelection(currentText.length());
+                    etFechaExpiracion.addTextChangedListener(this);
                 }
             }
         });

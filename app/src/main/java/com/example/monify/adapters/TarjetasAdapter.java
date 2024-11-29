@@ -36,7 +36,7 @@ public class TarjetasAdapter extends RecyclerView.Adapter<TarjetasAdapter.Tarjet
 
         // Seteamos los textos
         holder.tvNombreTarjeta.setText(tarjeta.getNombre());
-        holder.tvNumeroTarjeta.setText("Número: " + tarjeta.getNumero());
+        holder.tvNumeroTarjeta.setText(tarjeta.getNumero());
         holder.tvSaldoTarjeta.setText("Saldo: $" + tarjeta.getSaldo());
         holder.tvFechaExpiracion.setText("Vence: " + tarjeta.getFechaExpiracion());
 
