@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class TarjetasActivity extends AppCompatActivity {
-
+    private Button btnVolver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,8 @@ public class TarjetasActivity extends AppCompatActivity {
                 navegarAVerTarjetas(); // Llamar a la función para navegar a VerTarjetasActivity
             }
         });
+        btnVolver = findViewById(R.id.btnVolver);
+        btnVolver.setOnClickListener(v -> finish());
     }
 
     // Función que maneja el Intent para navegar a InsertarTarjetaActivity
