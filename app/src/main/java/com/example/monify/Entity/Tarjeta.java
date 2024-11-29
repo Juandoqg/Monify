@@ -50,5 +50,9 @@ public class Tarjeta {
     public String getFechaExpiracion() { return fechaExpiracion; }
     public void setFechaExpiracion(String fechaExpiracion) { this.fechaExpiracion = fechaExpiracion; }
 
+    @Override
+    public String toString() {
+        return nombre + " - " + numero.substring(numero.length() - 4); // Muestra el nombre y los últimos 4 dígitos del número
+    }
 }
 

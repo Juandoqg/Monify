@@ -3,6 +3,7 @@ package com.example.monify;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,12 @@ public class inicioApp extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Button btnAgregarIngreso = findViewById(R.id.btnAgregarIngreso);
+        btnAgregarIngreso.setOnClickListener(view -> {
+            Intent intent = new Intent(inicioApp.this, AgregarIngreso.class);
+            startActivity(intent);
+        });
+
 
         // Configura el BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);

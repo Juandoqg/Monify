@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Monify"
         tools:targetApi="31">
         <activity
+            android:name=".AgregarIngreso"
+            android:exported="false" />
+        <activity
             android:name=".VerTarjetasActivity"
             android:exported="false" />
         <activity

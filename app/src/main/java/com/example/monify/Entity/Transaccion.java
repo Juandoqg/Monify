@@ -25,15 +25,7 @@ public class Transaccion {
     private int userId;  // Clave foránea hacia Usuario
     private int tarjetaId;  // Clave foránea hacia Tarjeta
 
-    // Constructor
-    public Transaccion(String tipo, double monto, int userId, int tarjetaId) {
-        this.tipo = tipo;
-        this.monto = monto;
-        this.userId = userId;
-        this.tarjetaId = tarjetaId;
-    }
 
-    // Getters y Setters
     public int getId() {
         return id;
     }
