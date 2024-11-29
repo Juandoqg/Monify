@@ -32,4 +32,7 @@ public interface tarjetaDao {
     // Eliminar todas las tarjetas de un usuario (si fuera necesario)
     @Query("DELETE FROM tarjetas WHERE userId = :userId")
     void eliminarTodasLasTarjetas(int userId);
+
+    @Query("UPDATE tarjetas SET saldo = :nuevoSaldo WHERE id = :tarjetaId")
+    void actualizarSaldo(int tarjetaId, double nuevoSaldo);
 }

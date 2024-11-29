@@ -78,6 +78,10 @@ public class AgregarIngreso extends AppCompatActivity {
             transaccion.setTarjetaId(tarjetaSeleccionadaId);
             transaccion.setUserId(userId);
             insertTransaccion(transaccion);
+
+            // Actualizar el saldo de la tarjeta
+            actualizarSaldoTarjeta(tarjetaSeleccionadaId, monto);
+
         });
     }
 
@@ -133,6 +137,36 @@ public class AgregarIngreso extends AppCompatActivity {
                 });
             }
         }).start();
+    }
+    private void actualizarSaldoTarjeta(int tarjetaId, double monto) {
+        // Ejecutar en un hilo en segundo plano
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                // Obtener el DAO de la tarjeta
+                tarjetaDao tarjetaDao = db.tarjetaDao();
+
+                // Obtener la tarjeta seleccionada
+                Tarjeta tarjeta = tarjetaDao.obtenerTarjetaPorId(tarjetaId);
+                if (tarjeta != null) {
+                    // Sumar el monto al saldo de la tarjeta
+                    double nuevoSaldo = tarjeta.getSaldo() + monto;
+                    tarjeta.setSaldo(nuevoSaldo);
+
+                    // Actualizar el saldo de la tarjeta en la base de datos
+                    tarjetaDao.actualizarSaldo( tarjetaId, (int)nuevoSaldo);
+
+                    // Mostrar mensaje en el hilo principal
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(AgregarIngreso.this, "Saldo actualizado exitosamente", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        });
     }
 
     private void clearFields() {
