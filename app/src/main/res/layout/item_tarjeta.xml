@@ -12,39 +12,35 @@
     <ImageView
         android:id="@+id/imageViewTarjeta"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="230dp"
         android:scaleType="centerCrop"
         android:contentDescription="@string/tarjeta_background" />
 
-    <!-- Contenedor para los textos -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:gravity="center"
-        android:background="@android:color/transparent">
 
-        <TextView
-            android:id="@+id/tvNombreTarjeta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="8dp"
-            android:ellipsize="end"
-            android:maxLines="1" />
+    <TextView
+        android:id="@+id/tvNombreTarjeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="35dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-        <TextView
+    <TextView
             android:id="@+id/tvNumeroTarjeta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
             android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="150dp"
             android:ellipsize="end"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvSaldoTarjeta"
@@ -53,6 +49,8 @@
             android:textSize="16sp"
             android:textColor="@android:color/white"
             android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="170dp"
             android:ellipsize="end"
             android:maxLines="1" />
 
@@ -60,9 +58,10 @@
             android:id="@+id/tvFechaExpiracion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/darker_gray"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="190dp"
+            android:textColor="@android:color/white"
             android:textSize="14sp" />
-    </LinearLayout>
+
 </FrameLayout>
 
