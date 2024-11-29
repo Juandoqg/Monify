@@ -31,6 +31,12 @@ public class inicioApp extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button btnAgregarGasto = findViewById(R.id.btnAgregarGasto);
+        btnAgregarGasto.setOnClickListener(view -> {
+            Intent intent = new Intent(inicioApp.this, AgregarGasto.class);
+            startActivity(intent);
+        });
+
 
         // Configura el BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
