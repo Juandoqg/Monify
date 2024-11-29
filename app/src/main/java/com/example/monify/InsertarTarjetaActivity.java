@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.monify.DAO.tarjetaDao;
 import com.example.monify.Interface.AppDatabase;
 import com.example.monify.Entity.Tarjeta;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 public class InsertarTarjetaActivity extends AppCompatActivity {
 
@@ -44,6 +46,45 @@ public class InsertarTarjetaActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerNombre.setAdapter(adapter);
 
+        // Agregar TextWatcher al campo etNumero
+        etNumero.addTextChangedListener(new TextWatcher() {
+            private String currentText = "";
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No se necesita implementar nada aquí
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // No se necesita implementar nada aquí
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String input = s.toString();
+                // Evitar bucles infinitos
+                if (!input.equals(currentText)) {
+                    // Eliminar cualquier carácter no numérico
+                    String formattedInput = input.replaceAll("[^0-9]", "");
+
+                    // Actualizar el texto formateado (por ejemplo, añadiendo espacios cada 4 caracteres)
+                    StringBuilder formatted = new StringBuilder();
+                    for (int i = 0; i < formattedInput.length(); i++) {
+                        if (i > 0 && i % 4 == 0) {
+                            formatted.append(" ");
+                        }
+                        formatted.append(formattedInput.charAt(i));
+                    }
+
+                    currentText = formatted.toString();
+                    etNumero.removeTextChangedListener(this); // Eliminar temporalmente el listener
+                    etNumero.setText(currentText); // Establecer el texto actualizado
+                    etNumero.setSelection(currentText.length()); // Mover el cursor al final
+                    etNumero.addTextChangedListener(this); // Volver a agregar el listener
+                }
+            }
+        });
         // Acción al hacer clic en el botón "Agregar Tarjeta"
         btnAgregarTarjeta.setOnClickListener(new View.OnClickListener() {
             @Override
