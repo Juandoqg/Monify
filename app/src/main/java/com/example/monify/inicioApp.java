@@ -20,6 +20,8 @@ import com.example.monify.Entity.Transaccion;
 import com.example.monify.Interface.AppDatabase;
 import com.example.monify.viewmodel.TransaccionViewModelFactory;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -173,7 +175,6 @@ public class inicioApp extends AppCompatActivity {
         }.execute();
     }
 
-    // Método para graficar el gráfico de barras
     private void graficarBarChart(BarChart barChart, float totalIngresos, float totalGastos) {
         // Crear las entradas para las barras
         List<BarEntry> entries = new ArrayList<>();
@@ -181,11 +182,11 @@ public class inicioApp extends AppCompatActivity {
         entries.add(new BarEntry(1f, totalGastos));  // Posición 1: Gastos
 
         // Crear el dataset para el gráfico de barras
-        BarDataSet dataSet = new BarDataSet(entries, "");
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        BarDataSet dataSet = new BarDataSet(entries, ""); // Sin título para el dataset general
+        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);  // Colores para las barras
         dataSet.setValueTextSize(12f);
 
-        // Configurar los datos del gráfico de barras
+        // Crear los datos del gráfico de barras
         BarData barData = new BarData(dataSet);
         barData.setBarWidth(0.9f); // Ancho de las barras
 
@@ -208,8 +209,33 @@ public class inicioApp extends AppCompatActivity {
         barChart.getAxisLeft().setAxisMinimum(0f); // Eje izquierdo empieza en 0
         barChart.animateY(1000); // Animación del gráfico
         barChart.setExtraOffsets(10f, 30f, 10f, 10f); // Márgenes adicionales para el gráfico
+
+        // Habilitar y configurar la leyenda
+        Legend legend = barChart.getLegend();
+        legend.setEnabled(true);  // Habilitar la leyenda
+        legend.setForm(Legend.LegendForm.SQUARE);  // Formato cuadrado para los cuadros de color
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);  // Alinear horizontalmente a la izquierda
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);  // Alinear verticalmente en la parte inferior
+        legend.setFormSize(10f); // Tamaño de los cuadros en la leyenda
+        legend.setTextSize(12f);  // Tamaño del texto de las leyendas
+        legend.setXEntrySpace(60f);  // Asegurar espacio entre las entradas horizontales
+        legend.setYEntrySpace(10f);  // Asegurar espacio entre las entradas verticales
+
+        // Agregar más espacio a la izquierda (si es necesario)
+        legend.setXOffset(90f);  // Ajustar el desplazamiento de la leyenda a la izquierda
+
+        // Personalizar la leyenda para que "Ingreso" y "Gasto" aparezcan con los colores correspondientes
+        List<LegendEntry> legendEntries = new ArrayList<>();
+        legendEntries.add(new LegendEntry("Ingreso", Legend.LegendForm.SQUARE, 10f, 10f, null, ColorTemplate.MATERIAL_COLORS[0]));  // Verde (o el primer color)
+        legendEntries.add(new LegendEntry("Gasto", Legend.LegendForm.SQUARE, 10f, 10f, null, ColorTemplate.MATERIAL_COLORS[1]));   // Amarillo (o el segundo color)
+        legend.setCustom(legendEntries); // Establecer las entradas personalizadas en la leyenda
+
         barChart.invalidate(); // Refrescar el gráfico
     }
+
+
+
+
 
     private void graficarPieChart(PieChart pieChart, int visaCount, int masterCardCount) {
         List<PieEntry> pieEntries = new ArrayList<>();
