@@ -1,5 +1,6 @@
 package com.example.monify.DAO;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -23,5 +24,5 @@ public interface transaccionDao {
 
     // Obtener todas las transacciones
     @Query("SELECT * FROM transacciones")
-    List<Transaccion> obtenerTodasLasTransacciones();
+    LiveData<List<Transaccion>> obtenerTodasLasTransacciones();
 }
