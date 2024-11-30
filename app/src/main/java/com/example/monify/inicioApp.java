@@ -281,8 +281,20 @@ public class inicioApp extends AppCompatActivity {
         // Establecer el color de los nombres de las entradas dentro del gráfico
         pieChart.setEntryLabelColor(Color.BLACK);  // Establece el color negro para los nombres dentro del pie
 
-        pieChart.invalidate();
+        // Centrar la leyenda
+        Legend legend = pieChart.getLegend();
+        legend.setEnabled(true); // Habilitar la leyenda
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER); // Centrar horizontalmente
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM); // Colocar en la parte inferior
+        legend.setForm(Legend.LegendForm.SQUARE); // Establecer el estilo de la leyenda
+        legend.setFormSize(10f); // Tamaño de los cuadros de la leyenda
+        legend.setTextSize(12f); // Tamaño del texto de la leyenda
+        legend.setXEntrySpace(20f); // Espacio horizontal entre los elementos de la leyenda
+        legend.setYEntrySpace(10f); // Espacio vertical entre los elementos de la leyenda
+
+        pieChart.invalidate(); // Refrescar el gráfico
     }
+
 
 
 
