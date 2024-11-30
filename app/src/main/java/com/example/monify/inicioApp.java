@@ -1,6 +1,7 @@
 package com.example.monify;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -217,8 +218,8 @@ public class inicioApp extends AppCompatActivity {
 
         // Crear el dataset para el gráfico de pie
         PieDataSet pieDataSet = new PieDataSet(pieEntries, "");
-        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        pieDataSet.setValueTextSize(12f);
+        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);  // Colores para las porciones
+        pieDataSet.setValueTextSize(12f);  // Tamaño del texto para los valores
 
         // Crear los datos del gráfico de pie
         PieData pieData = new PieData(pieDataSet);
@@ -244,9 +245,19 @@ public class inicioApp extends AppCompatActivity {
         // Desactivar los valores en porcentaje y mostrar el número de transacciones
         pieChart.setUsePercentValues(false);  // Desactivar los valores en porcentaje
         pieChart.animateY(1000);
-        pieChart.setExtraOffsets(10f, 20f, 10f, 0f); // Márgenes adicionales para el gráfico
+
+        // Ajustar márgenes adicionales para el gráfico
+        pieChart.setExtraOffsets(10f, 20f, 10f, 0f);
+
+        // Habilitar los nombres dentro del gráfico (porciones)
+        pieChart.setDrawEntryLabels(true);  // Activar los nombres de las entradas
+
+        // Establecer el color de los nombres de las entradas dentro del gráfico
+        pieChart.setEntryLabelColor(Color.BLACK);  // Establece el color negro para los nombres dentro del pie
+
         pieChart.invalidate();
     }
+
 
 
 
