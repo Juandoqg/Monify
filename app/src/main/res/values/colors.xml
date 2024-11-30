@@ -144,5 +144,7 @@
     <color name="md_theme_surfaceContainerHighest_highContrast">#DFE4DC</color>
     <color name="background_color">#F5F5F5</color>
     <color name="primary_color">#6200EE</color>
-
+    <color name="primaryTextColor">#212121</color>
+    <color name="buttonColor">#2196F3</color>
+    <color name="primaryColor">#FF6200EE</color>
 </resources>
