@@ -15,7 +15,7 @@
         android:layout_margin="16dp"
         android:gravity="center"
         android:padding="8dp"
-        android:text="¡Bienvenido! Aquí encontrarás la gráfica con los totales de tus ingresos y gastos en tus tarjetas."
+        android:text="¡Bienvenido! Aquí encontrarás la gráfica con los totales de tus ingresos y gastos en tus tarjetas, ademas movimientos cantidad de movimientos por tarjeta"
         android:textAlignment="center"
         android:textColor="@color/primaryTextColor"
         android:textSize="18sp"
