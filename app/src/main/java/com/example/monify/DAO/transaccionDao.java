@@ -25,4 +25,7 @@ public interface transaccionDao {
     // Obtener todas las transacciones
     @Query("SELECT * FROM transacciones")
     LiveData<List<Transaccion>> obtenerTodasLasTransacciones();
+
+    @Query("SELECT nombre FROM tarjetas WHERE id = :tarjetaId LIMIT 1")
+    String getNombreTarjeta(int tarjetaId);
 }
