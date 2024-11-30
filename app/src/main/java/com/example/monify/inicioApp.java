@@ -1,6 +1,7 @@
 package com.example.monify;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -179,7 +180,7 @@ public class inicioApp extends AppCompatActivity {
         entries.add(new BarEntry(1f, totalGastos));  // Posición 1: Gastos
 
         // Crear el dataset para el gráfico de barras
-        BarDataSet dataSet = new BarDataSet(entries, "Transacciones");
+        BarDataSet dataSet = new BarDataSet(entries, "");
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         dataSet.setValueTextSize(12f);
 
@@ -189,25 +190,33 @@ public class inicioApp extends AppCompatActivity {
 
         barChart.setData(barData);
         barChart.setFitBars(true); // Ajusta las barras al eje X
-        barChart.getDescription().setEnabled(false); // Desactiva la descripción
+
+        // Habilitar la descripción y colocar el título arriba
+        barChart.getDescription().setEnabled(true);
+        barChart.getDescription().setText("Total de transacciones por Monto");
+        barChart.getDescription().setTextSize(14f);
+        barChart.getDescription().setPosition(650f, 45f); // Ajustar posición del título más abajo
+        barChart.getDescription().setTextAlign(Paint.Align.CENTER); // Centrar el título
+
+        // Configuración del eje X y demás opciones
         barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(new String[]{"Ingresos", "Gastos"}));
         barChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         barChart.getXAxis().setGranularity(1f);
         barChart.getXAxis().setGranularityEnabled(true);
-        barChart.getAxisRight().setEnabled(false); // Oculta el eje derecho
+        barChart.getAxisRight().setEnabled(false); // Ocultar el eje derecho
         barChart.getAxisLeft().setAxisMinimum(0f); // Eje izquierdo empieza en 0
         barChart.animateY(1000); // Animación del gráfico
-        barChart.invalidate(); // Refresca el gráfico
+        barChart.setExtraOffsets(10f, 30f, 10f, 10f); // Márgenes adicionales para el gráfico
+        barChart.invalidate(); // Refrescar el gráfico
     }
 
-    // Método para graficar el gráfico de pie
     private void graficarPieChart(PieChart pieChart, int visaCount, int masterCardCount) {
         List<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(visaCount, "VISA"));
         pieEntries.add(new PieEntry(masterCardCount, "MASTERCARD"));
 
         // Crear el dataset para el gráfico de pie
-        PieDataSet pieDataSet = new PieDataSet(pieEntries, "Cantidad de movimientos por tarjeta");
+        PieDataSet pieDataSet = new PieDataSet(pieEntries, "");
         pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         pieDataSet.setValueTextSize(12f);
 
@@ -224,13 +233,22 @@ public class inicioApp extends AppCompatActivity {
 
         // Configurar el gráfico de pie
         pieChart.setData(pieData);
-        pieChart.getDescription().setEnabled(false);
+
+        // Habilitar la descripción y colocar el título arriba
+        pieChart.getDescription().setEnabled(true);
+        pieChart.getDescription().setText("Cantidad de Movimientos por Tarjeta");
+        pieChart.getDescription().setTextSize(14f);
+        pieChart.getDescription().setPosition(600f, 80f); // Ajustar posición del título más abajo
+        pieChart.getDescription().setTextAlign(Paint.Align.CENTER); // Centrar el título
 
         // Desactivar los valores en porcentaje y mostrar el número de transacciones
         pieChart.setUsePercentValues(false);  // Desactivar los valores en porcentaje
         pieChart.animateY(1000);
+        pieChart.setExtraOffsets(10f, 20f, 10f, 0f); // Márgenes adicionales para el gráfico
         pieChart.invalidate();
     }
+
+
 
 
 
