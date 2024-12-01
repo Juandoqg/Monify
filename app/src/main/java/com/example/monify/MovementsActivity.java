@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.monify.DAO.transaccionDao;
 import com.example.monify.Entity.Tarjeta;
 import com.example.monify.Entity.Transaccion;
+import com.example.monify.Entity.TransactionWithCard;
 import com.example.monify.Interface.AppDatabase;
 import com.example.monify.adapters.TarjetasAdapter;
 import com.example.monify.adapters.TransaccionAdapter;
@@ -40,15 +41,20 @@ public class MovementsActivity extends AppCompatActivity {
         }
 
         new Thread(() -> {
+            // Obtener la instancia de la base de datos
             AppDatabase db = AppDatabase.getInstance(getApplicationContext());
             transaccionDao = db.transaccionDao();
-            List<Transaccion> transacciones = transaccionDao.obtenerTransaccionesPorUsuario(userId);
 
+            // Cambia el método para obtener las transacciones con tarjeta
+            List<TransactionWithCard> transaccionesConTarjetas = transaccionDao.obtenerTransaccionesConTarjeta(userId);
+
+            // Actualiza la UI en el hilo principal
             runOnUiThread(() -> {
-                // Configurar el adaptador en el hilo principal
-                transaccionAdapter = new TransaccionAdapter(transacciones);
+                // Configura el adaptador en el RecyclerView
+                TransaccionAdapter transaccionAdapter = new TransaccionAdapter(transaccionesConTarjetas);
                 recyclerView.setAdapter(transaccionAdapter);
             });
         }).start();
+
     }
 }

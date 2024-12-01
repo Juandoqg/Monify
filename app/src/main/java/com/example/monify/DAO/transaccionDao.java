@@ -4,7 +4,10 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
+
 import com.example.monify.Entity.Transaccion;
+import com.example.monify.Entity.TransactionWithCard;
 
 import java.util.List;
 
@@ -15,8 +18,9 @@ public interface transaccionDao {
     void insertarTransaccion(Transaccion transaccion);
 
     // Obtener transacciones por usuario
+    @Transaction
     @Query("SELECT * FROM transacciones WHERE userId = :userId")
-    List<Transaccion> obtenerTransaccionesPorUsuario(int userId);
+    List<TransactionWithCard> obtenerTransaccionesConTarjeta(int userId);
 
     // Obtener transacciones por tarjeta
     @Query("SELECT * FROM transacciones WHERE tarjetaId = :tarjetaId")
