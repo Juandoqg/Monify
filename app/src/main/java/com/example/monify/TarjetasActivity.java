@@ -49,8 +49,6 @@ public class TarjetasActivity extends AppCompatActivity {
         btnVolver.setOnClickListener(v -> finish());
 
         ImageView imagenView = findViewById(R.id.imagen);
-
-        // Cargar la imagen desde una URL o recurso con Picasso
         Picasso.get().load(R.drawable.imagen_tarjeta).into(imagenView);
     }
 
