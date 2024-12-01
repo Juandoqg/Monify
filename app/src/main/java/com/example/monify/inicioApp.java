@@ -83,20 +83,25 @@ public class inicioApp extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Establece el listener para los ítems del menú
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
-            // Verifica si el ítem seleccionado es el correcto
             if (id == R.id.navigation_dashboard) {
-                // Lanza la actividad TarjetasActivity
+                Toast.makeText(this, "Lanzando TarjetasActivity", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(inicioApp.this, TarjetasActivity.class);
                 startActivity(intent);
-                return true;  // Se ha manejado el evento
+                return true;  // Evento manejado
+            } else if (id == R.id.navigation_movements) {
+                Toast.makeText(this, "Lanzando MovementsActivity", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(inicioApp.this, MovementsActivity.class);
+                startActivity(intent);
+                return true;  // Evento manejado
             }
 
-            return false;  // Si no es el ítem que nos interesa
+            return false;  // No manejado
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
@@ -105,22 +110,6 @@ public class inicioApp extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        // Agrega un log o Toast para asegurarte de que el ítem fue seleccionado
-        if (id == R.id.navigation_dashboard) {
-            Toast.makeText(this, "Lanzando TarjetasActivity", Toast.LENGTH_SHORT).show();
-
-            // Lanza la actividad TarjetasActivity
-            Intent intent = new Intent(inicioApp.this, TarjetasActivity.class);
-            startActivity(intent);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     private void graficarTransacciones(List<Transaccion> transacciones) {
         // Obtener el DAO
