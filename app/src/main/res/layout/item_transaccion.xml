@@ -1,0 +1,39 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Tipo y monto en una línea -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_tipo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tipo"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_monto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monto"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Número de tarjeta -->
+    <TextView
+        android:id="@+id/text_tarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Número de Tarjeta"
+        android:textStyle="italic"
+        android:textSize="12sp"
+        android:paddingTop="4dp" />
+</LinearLayout>
