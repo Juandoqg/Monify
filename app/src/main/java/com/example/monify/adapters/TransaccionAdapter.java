@@ -41,7 +41,8 @@ public class TransaccionAdapter extends RecyclerView.Adapter<TransaccionAdapter.
         // Configura los datos en las vistas
         holder.tipo.setText(transactionWithCard.transaccion.getTipo());
         holder.monto.setText(String.format("$ %.2f", transactionWithCard.transaccion.getMonto()));
-        holder.tarjeta.setText("Tarjeta: " + transactionWithCard.tarjeta.getNumero());
+        holder.tipoTarjeta.setText("Tipo: " + transactionWithCard.tarjeta.getNombre());
+        holder.tarjeta.setText( transactionWithCard.tarjeta.getNumero());
     }
 
     // Devuelve el tamaño del dataset
@@ -52,12 +53,13 @@ public class TransaccionAdapter extends RecyclerView.Adapter<TransaccionAdapter.
 
     // Proporciona una referencia a las vistas de cada ítem
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tipo, monto, tarjeta;
+        TextView tipo,tipoTarjeta, monto, tarjeta;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tipo = itemView.findViewById(R.id.text_tipo);   // ID del TextView en transaccion_item.xml
             monto = itemView.findViewById(R.id.text_monto); // ID del TextView en transaccion_item.xml
+            tipoTarjeta = itemView.findViewById(R.id.text_tipo_tarjeta);
             tarjeta = itemView.findViewById(R.id.text_numero_tarjeta); // ID del nuevo TextView para mostrar la tarjeta
         }
     }
