@@ -2,6 +2,7 @@ package com.example.monify;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class MovementsActivity extends AppCompatActivity {
 
     private transaccionDao transaccionDao;
     private RecyclerView recyclerView;
-    private TransaccionAdapter transaccionAdapter;
+    private Button btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,9 @@ public class MovementsActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        btnVolver = findViewById(R.id.btnVolver);
+        btnVolver.setOnClickListener(v -> finish()); // Finaliza la actividad para volver
 
         // Obtén el userId pasado desde la actividad principal
         SharedPreferences preferences = getSharedPreferences("userPrefs", MODE_PRIVATE);

@@ -1,39 +1,45 @@
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="@android:color/white">
 
-    <!-- Tipo y monto en una línea -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/text_tipo"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tipo"
-            android:textStyle="bold" />
+            android:text="Tipo de transacción"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_monto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Monto"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
 
-    <!-- Número de tarjeta -->
-    <TextView
-        android:id="@+id/text_tarjeta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Número de Tarjeta"
-        android:textStyle="italic"
-        android:textSize="12sp"
-        android:paddingTop="4dp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/text_numero_tarjeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Número de tarjeta"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+

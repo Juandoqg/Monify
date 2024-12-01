@@ -58,7 +58,7 @@ public class TransaccionAdapter extends RecyclerView.Adapter<TransaccionAdapter.
             super(itemView);
             tipo = itemView.findViewById(R.id.text_tipo);   // ID del TextView en transaccion_item.xml
             monto = itemView.findViewById(R.id.text_monto); // ID del TextView en transaccion_item.xml
-            tarjeta = itemView.findViewById(R.id.text_tarjeta); // ID del nuevo TextView para mostrar la tarjeta
+            tarjeta = itemView.findViewById(R.id.text_numero_tarjeta); // ID del nuevo TextView para mostrar la tarjeta
         }
     }
 }
