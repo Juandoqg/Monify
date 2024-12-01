@@ -22,12 +22,13 @@
         android:id="@+id/imagenAlusiva"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:src="@drawable/imagen_tarjeta_gasto"
         android:layout_marginTop="16dp"
+        android:src="@drawable/imagen_tarjeta_gasto"
+        android:contentDescription="Imagen de ingresar a gasto"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@id/tituloBienvenido"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Imagen de ingreso a tarjeta"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/textSeleccionaTarjeta"
