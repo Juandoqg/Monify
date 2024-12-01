@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.squareup.picasso.Picasso;
+import android.widget.ImageView;
 
 public class TarjetasActivity extends AppCompatActivity {
     private Button btnVolver;
@@ -45,6 +47,11 @@ public class TarjetasActivity extends AppCompatActivity {
         });
         btnVolver = findViewById(R.id.btnVolver);
         btnVolver.setOnClickListener(v -> finish());
+
+        ImageView imagenView = findViewById(R.id.imagen);
+
+        // Cargar la imagen desde una URL o recurso con Picasso
+        Picasso.get().load(R.drawable.imagen_tarjeta).into(imagenView);
     }
 
     // Función que maneja el Intent para navegar a InsertarTarjetaActivity
