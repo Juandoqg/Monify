@@ -89,21 +89,6 @@ public class crearCuenta extends AppCompatActivity {
         onBackPressed();
     }
 
-    // Método para ver usuarios en la base de datos
-    public void ver_users(View v) {
-        new Thread(() -> {
-            try {
-                List<User> users = userDao.getAllUsers();
-                for (User user : users) {
-                    Log.d("Room", "User: " + user.userName + ", Email: " + user.email + ", Contra: " + user.password);
-                }
-                runOnUiThread(() -> showSnackbar(v, "Usuarios registrados mostrados en logcat"));
-            } catch (Exception e) {
-                Log.e("Room", "Error al obtener usuarios", e);
-                runOnUiThread(() -> showSnackbar(v, "Error al obtener usuarios"));
-            }
-        }).start();
-    }
 
     // Método para mostrar un Snackbar personalizado
     private void showSnackbar(View view, String message) {

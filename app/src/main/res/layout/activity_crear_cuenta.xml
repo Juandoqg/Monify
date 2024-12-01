@@ -109,14 +109,7 @@
                     android:onClick="registrar_usuario"
                     android:text="Crear cuenta" />
 
-                <Button
-                    android:id="@+id/verUsuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:onClick="ver_users"
-                    android:text="Ver usuarios" />
+
             </LinearLayout>
 
         </FrameLayout>
