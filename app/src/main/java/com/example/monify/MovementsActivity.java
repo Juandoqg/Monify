@@ -32,7 +32,7 @@ public class MovementsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         btnVolver = findViewById(R.id.btnVolver);
-        btnVolver.setOnClickListener(v -> finish()); // Finaliza la actividad para volver
+        btnVolver.setOnClickListener(v -> finish());
 
         // Obtén el userId pasado desde la actividad principal
         SharedPreferences preferences = getSharedPreferences("userPrefs", MODE_PRIVATE);
