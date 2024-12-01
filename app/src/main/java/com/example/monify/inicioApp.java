@@ -87,12 +87,12 @@ public class inicioApp extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.navigation_dashboard) {
-                Toast.makeText(this, "Lanzando TarjetasActivity", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(inicioApp.this, TarjetasActivity.class);
                 startActivity(intent);
                 return true;  // Evento manejado
             } else if (id == R.id.navigation_movements) {
-                Toast.makeText(this, "Lanzando MovementsActivity", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(inicioApp.this, MovementsActivity.class);
                 startActivity(intent);
                 return true;  // Evento manejado

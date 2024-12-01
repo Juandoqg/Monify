@@ -23,7 +23,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class AgregarGasto extends AppCompatActivity {
-
+    private Button btnVolver;
     private Spinner spinnerTarjetas;
     private EditText edtMonto;
     private Button btnAgregarGasto;
@@ -35,6 +35,8 @@ public class AgregarGasto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_gasto); // Usa el mismo layout
+        btnVolver = findViewById(R.id.btnVolver);
+        btnVolver.setOnClickListener(v -> finish());
 
         spinnerTarjetas = findViewById(R.id.spinnerTarjetas);
         edtMonto = findViewById(R.id.edtMonto);
