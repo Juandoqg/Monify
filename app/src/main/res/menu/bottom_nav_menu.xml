@@ -10,7 +10,7 @@
         android:icon="@drawable/home_icon"
         android:title="Inicio" />
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/configuracion_icon"
-        android:title="Configuracion" />
+        android:id="@+id/navigation_movements"
+        android:icon="@drawable/movement_icon"
+        android:title="Movimientos" />
 </menu>
