@@ -62,7 +62,15 @@ public class InsertarTarjetaActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 String input = s.toString();
                 if (!input.equals(currentText)) {
+                    // Elimina todos los caracteres no numéricos
                     String formattedInput = input.replaceAll("[^0-9]", "");
+
+                    // Si la longitud del texto supera los 16 dígitos, corta el texto a 16
+                    if (formattedInput.length() > 16) {
+                        formattedInput = formattedInput.substring(0, 16);
+                    }
+
+                    // Formatea el texto en bloques de 4 caracteres
                     StringBuilder formatted = new StringBuilder();
                     for (int i = 0; i < formattedInput.length(); i++) {
                         if (i > 0 && i % 4 == 0) {
@@ -70,13 +78,15 @@ public class InsertarTarjetaActivity extends AppCompatActivity {
                         }
                         formatted.append(formattedInput.charAt(i));
                     }
+
                     currentText = formatted.toString();
-                    etNumero.removeTextChangedListener(this);
-                    etNumero.setText(currentText);
-                    etNumero.setSelection(currentText.length());
-                    etNumero.addTextChangedListener(this);
+                    etNumero.removeTextChangedListener(this); // Elimina el listener temporalmente
+                    etNumero.setText(currentText); // Establece el texto formateado
+                    etNumero.setSelection(currentText.length()); // Coloca el cursor al final
+                    etNumero.addTextChangedListener(this); // Vuelve a agregar el listener
                 }
             }
+
         });
 
         // Agregar TextWatcher al campo de fecha de expiración
