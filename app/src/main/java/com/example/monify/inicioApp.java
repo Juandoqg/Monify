@@ -1,6 +1,7 @@
 package com.example.monify;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.AsyncTask;
@@ -53,12 +54,14 @@ public class inicioApp extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        SharedPreferences preferences = getSharedPreferences("userPrefs", MODE_PRIVATE);
+        int userId = preferences.getInt("userId", -1); // Asegúrate de que se haya guardado previamente el userId
 
         TransaccionViewModelFactory factory = new TransaccionViewModelFactory(getApplication());
         TransaccionViewModel viewModel = new ViewModelProvider(this, factory).get(TransaccionViewModel.class);
 
         // Observa las transacciones y actualiza la UI
-        viewModel.getTransacciones().observe(this, transacciones -> {
+        viewModel.getTransaccionesConUsuario(userId).observe(this, transacciones -> {
             if (transacciones != null) {
                 graficarTransacciones(transacciones);
             }
@@ -283,11 +286,4 @@ public class inicioApp extends AppCompatActivity {
 
         pieChart.invalidate(); // Refrescar el gráfico
     }
-
-
-
-
-
-
-
 }

@@ -22,6 +22,8 @@ public interface transaccionDao {
     @Query("SELECT * FROM transacciones WHERE userId = :userId")
     List<TransactionWithCard> obtenerTransaccionesConTarjeta(int userId);
 
+    @Query("SELECT * FROM transacciones WHERE userId = :userId")
+    LiveData<List<Transaccion>> getTransaccionesConUsuario(int userId);
     // Obtener transacciones por tarjeta
     @Query("SELECT * FROM transacciones WHERE tarjetaId = :tarjetaId")
     List<Transaccion> obtenerTransaccionesPorTarjeta(int tarjetaId);

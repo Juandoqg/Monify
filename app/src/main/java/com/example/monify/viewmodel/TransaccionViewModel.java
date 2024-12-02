@@ -13,15 +13,15 @@ import com.example.monify.Interface.AppDatabase;
 import java.util.List;
 
 public class TransaccionViewModel extends AndroidViewModel {
-    private final LiveData<List<Transaccion>> transacciones;
+
+    private final AppDatabase db;
 
     public TransaccionViewModel(@NonNull Application application) {
         super(application);
-        AppDatabase db = AppDatabase.getInstance(application);
-        transacciones = db.transaccionDao().obtenerTodasLasTransacciones();
+        db = AppDatabase.getInstance(application);
     }
 
-    public LiveData<List<Transaccion>> getTransacciones() {
-        return transacciones;
+    public LiveData<List<Transaccion>> getTransaccionesConUsuario(int userId) {
+        return db.transaccionDao().getTransaccionesConUsuario(userId);
     }
 }
