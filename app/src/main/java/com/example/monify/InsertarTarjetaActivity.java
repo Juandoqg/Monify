@@ -103,18 +103,52 @@ public class InsertarTarjetaActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 String input = s.toString();
                 if (!input.equals(currentText)) {
+                    // Remover caracteres no numéricos
                     String formattedInput = input.replaceAll("[^0-9]", "");
                     StringBuilder formatted = new StringBuilder();
+
+                    // Formatear a MM/AA
                     for (int i = 0; i < formattedInput.length(); i++) {
                         if (i == 2 && formatted.length() < 5) {
                             formatted.append("/");
                         }
                         formatted.append(formattedInput.charAt(i));
                     }
+
+                    // Limitar a MM/AA
                     if (formatted.length() > 5) {
-                        formatted.setLength(5); // Limitar a MM/AA
+                        formatted.setLength(5);
                     }
-                    currentText = formatted.toString();
+
+                    boolean isValid = true;
+
+                    // Validar mes y año
+                    if (formatted.length() == 5) {
+                        String[] parts = formatted.toString().split("/");
+                        int month = Integer.parseInt(parts[0]);
+                        int year = Integer.parseInt(parts[1]);
+
+                        // Validar que el mes esté entre 01 y 12
+                        if (month < 1 || month > 12) {
+                            isValid = false;
+                        }
+
+                        // Validar que el año sea > 24
+                        if (year <= 24) {
+                            isValid = false;
+                        }
+                    }
+
+                    // Actualizar texto solo si es válido
+                    if (isValid) {
+                        currentText = formatted.toString();
+                    } else {
+                        // Si es inválido, recortar la entrada
+                        currentText = formattedInput.length() > 2
+                                ? formattedInput.substring(0, 2) + "/"
+                                : formattedInput;
+                    }
+
                     etFechaExpiracion.removeTextChangedListener(this);
                     etFechaExpiracion.setText(currentText);
                     etFechaExpiracion.setSelection(currentText.length());
@@ -122,6 +156,8 @@ public class InsertarTarjetaActivity extends AppCompatActivity {
                 }
             }
         });
+
+
         // Acción al hacer clic en el botón "Agregar Tarjeta"
         btnAgregarTarjeta.setOnClickListener(new View.OnClickListener() {
             @Override
