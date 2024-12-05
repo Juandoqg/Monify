@@ -6,7 +6,4 @@ es una solución digital diseñada para ayudarte a gestionar tus finanzas de man
 ## Características
 
 - Registro rápido de ingresos y gastos: Anota cada movimiento en segundos para mantener tus cuentas siempre actualizadas.
-- Categorías personalizables: Organiza tus finanzas según tus necesidades, como compras, entretenimiento, ahorros, entre otros.
 - Reportes visuales: Obtén gráficos y resúmenes para visualizar cómo y en qué estás gastando tu dinero.
-- Alertas y recordatorios: Configura notificaciones para no olvidar pagos o para realizar un seguimiento de tus metas financieras.
-Seguridad: Protege tus datos financieros con autenticación de huella digital o PIN.
